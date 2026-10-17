@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1c4638">
+<meta name="description" content="Fabilous Lashidi — Computer Science student at NUST. Software internship portfolio.">
+<title>Fabilous Lashidi — Software Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --green:#1c4638;
+  --green-2:#245544;
+  --ink:#24312c;
+  --cream:#f4f1ea;
+  --note:#f6e7a2;
+  --coral:#ef7458;
+  --coral-2:#d4553a;
+  --muted:#5e6e66;
+  --line:#e4ddd0;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter,system-ui,sans-serif;
+  color:#f4f1ea;
+  background-color:var(--green);
+  background-image:
+    linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size:32px 32px;
+  line-height:1.5;
+  overflow-x:clip;
+}
+a{color:inherit}
+img{max-width:100%;display:block}
+.skip{position:absolute;left:12px;top:-40px;background:#fff;color:#111;padding:8px 12px;z-index:40}
+.skip:focus{top:12px}
+.navwrap{
+  position:sticky;top:0;z-index:20;
+  display:flex;justify-content:center;
+  padding:14px 12px 0;
+}
+nav{
+  display:flex;align-items:center;gap:2px;
+  max-width:100%;
+  overflow-x:auto;
+  background:rgba(18,48,40,.88);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px;
+  padding:6px 6px 6px 8px;
+  backdrop-filter:blur(12px);
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+nav a{
+  text-decoration:none;
+  color:#e7f2ec;
+  font-size:.92rem;
+  font-weight:500;
+  padding:8px 12px;
+  border-radius:999px;
+  white-space:nowrap;
+}
+nav a:hover{background:rgba(255,255,255,.08)}
+nav a.connect{background:var(--coral);color:#fff;font-weight:650;padding:8px 16px}
+nav a.connect:hover{background:#e3654a}
+.wrap{max-width:920px;margin:0 auto;padding:28px 18px 64px}
+.who{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;margin:18px 0 22px}
+.polaroid{
+  width:124px;background:#fff;padding:8px 8px 26px;
+  transform:rotate(-7deg);
+  box-shadow:0 14px 28px rgba(0,0,0,.28);
+  position:relative;
+}
+.polaroid:before{
+  content:"";position:absolute;top:-7px;left:50%;width:14px;height:14px;border-radius:50%;
+  background:var(--coral);transform:translateX(-50%);
+  box-shadow:0 0 0 3px #fff;
+}
+.polaroid img{width:108px;height:124px;object-fit:cover;object-position:center 32%}
+h1{margin:0 0 6px;font-size:clamp(1.8rem,4vw,2.35rem);font-weight:650;letter-spacing:-.03em}
+.script{font-family:Caveat,cursive;color:#f08a72;font-size:1.55rem;line-height:1.05;margin:0}
+.socials{display:flex;gap:8px}
+.socials a{
+  width:42px;height:42px;border-radius:50%;
+  border:1.5px dashed rgba(240,138,114,.85);
+  display:grid;place-items:center;color:#f08a72;
+}
+.socials a:hover{background:rgba(240,138,114,.12)}
+.socials svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8}
+.note{
+  background:var(--note);
+  color:var(--ink);
+  padding:22px 26px 18px;
+  border-radius:2px;
+  box-shadow:0 16px 34px rgba(0,0,0,.18);
+}
+.note ul{margin:0;padding-left:1.15rem}
+.note li{margin:0 0 10px}
+.note a{color:var(--coral-2);text-underline-offset:3px;text-decoration:underline wavy}
+.card{
+  background:var(--cream);
+  color:var(--ink);
+  border-radius:22px;
+  padding:18px 18px 14px;
+  margin-top:18px;
+  box-shadow:0 16px 34px rgba(0,0,0,.16);
+}
+.cal-label{margin:0 0 8px;font-size:.92rem;font-weight:600}
+.months,.cal{display:grid;grid-auto-flow:column;gap:3px}
+.months{grid-auto-columns:11px;height:16px;font-size:10px;color:#6b7a72}
+.months span{white-space:nowrap}
+.cal{grid-template-rows:repeat(7,11px);grid-auto-columns:11px;width:max-content}
+.cal i{display:block;width:11px;height:11px;border-radius:2px}
+.lv0{background:#e7eee4}.lv1{background:#9be9a8}.lv2{background:#40c463}.lv3{background:#30a14e}.lv4{background:#216e39}
+.cal-foot{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;flex-wrap:wrap;margin-top:10px;color:var(--muted);font-size:.82rem}
+.cal-foot a{color:var(--ink);font-weight:600}
+.scrollx{overflow-x:auto;padding-bottom:4px}
+h2{font-size:1.85rem;font-weight:650;letter-spacing:-.03em;margin:42px 0 16px}
+h2 .script{font-size:1.7rem;margin-left:6px}
+.rule{width:42px;height:3px;background:#f4f1ea;border:0;margin:-8px 0 18px}
+.pins{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pin{
+  background:#fff;color:var(--ink);
+  border-radius:18px;padding:12px 12px 16px;
+  box-shadow:0 14px 28px rgba(0,0,0,.16);
+  position:relative;
+}
+.pin:nth-child(odd){transform:rotate(-.6deg)}
+.pin:nth-child(even){transform:rotate(.5deg)}
+.poster{
+  height:150px;border-radius:12px;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:16px;color:#fff;margin-bottom:12px;
+}
+.poster.shot{padding:0;overflow:hidden}
+.poster.shot img{width:100%;height:150px;object-fit:cover;object-position:left top;border-radius:12px}
+.poster.shot.tall{height:190px}
+.poster.shot img.bench{object-position:center;height:190px}
+.poster span{font-family:Caveat,cursive;font-size:1.8rem;line-height:1}
+.poster strong{font-size:1.15rem}
+.p1{background:linear-gradient(160deg,#1b4332,#40916c)}
+.p2{background:linear-gradient(160deg,#9a3412,#f4a261)}
+.p3{background:linear-gradient(160deg,#1d4e89,#7eb6d9)}
+.p4{background:linear-gradient(160deg,#3d2c6b,#c4b5fd);color:#1c1433}
+.p5{background:linear-gradient(160deg,#3f3f46,#a8a29e)}
+.hack-head{display:flex;align-items:center;gap:10px}
+.hack-head h2{margin-bottom:0}
+.badge{
+  width:42px;height:42px;border-radius:50%;background:#fff;color:var(--coral);
+  display:grid;place-items:center;box-shadow:0 8px 16px rgba(0,0,0,.16);flex:0 0 auto
+}
+.badge svg{width:22px;height:22px}
+.clothesline{position:relative;margin-top:28px}
+.rope{
+  position:absolute;left:0;right:0;top:14px;height:4px;border-radius:4px;z-index:1;
+  background:linear-gradient(#e7c99a,#b8884e);
+  box-shadow:0 1px 0 rgba(255,255,255,.35);
+}
+.viewport{overflow:hidden;padding-top:8px;touch-action:pan-y}
+.track{
+  display:flex;gap:22px;transition:transform .65s cubic-bezier(.22,.8,.24,1);will-change:transform
+}
+.hang{
+  flex:0 0 calc(46% - 11px);
+  transform-origin:50% 0;
+  animation:sway 5.2s ease-in-out infinite;
+  animation-delay:var(--delay,0s);
+}
+.hang:nth-child(2){animation-duration:6s}
+.hang:nth-child(3){animation-duration:4.6s}
+.hang:nth-child(4){animation-duration:5.6s}
+@keyframes sway{
+  0%,100%{transform:rotate(var(--rot,-2deg))}
+  50%{transform:rotate(calc(var(--rot,-2deg) * -0.45))}
+}
+.hang:hover{animation:none;transform:rotate(0deg) translateY(-8px);transition:transform .35s ease}
+.peg{
+  width:16px;height:26px;margin:0 auto -8px;position:relative;z-index:2;
+  background:linear-gradient(#f0d7a2,#c4893c);
+  border-radius:2px;
+  box-shadow:inset 0 0 0 1px rgba(120,70,20,.25), 0 2px 2px rgba(0,0,0,.2);
+}
+.peg:before{
+  content:"";position:absolute;left:50%;top:3px;bottom:3px;width:2px;
+  background:rgba(90,48,12,.35);transform:translateX(-50%);
+}
+.frame{
+  background:#fff;color:var(--ink);padding:10px 10px 14px;
+  box-shadow:0 16px 28px rgba(0,0,0,.22);
+}
+.frame img{width:100%;height:210px;object-fit:cover;object-position:center 30%;background:#efeae2}
+.frame img.up{object-position:center 18%}
+.place{font-family:Caveat,cursive;color:var(--coral-2);font-size:1.55rem;margin:10px 0 0}
+.frame h3,.project h3{margin:2px 0 4px;font-size:1.2rem}
+.frame p{margin:0;font-size:.92rem}
+.arrows{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+.arrows button{
+  width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.22);
+  background:rgba(8,28,22,.35);color:#fff;cursor:pointer;font-size:1.2rem
+}
+.arrows button:hover{background:rgba(255,255,255,.14)}
+.arrows button:disabled{opacity:.35;cursor:default}
+@media(prefers-reduced-motion:reduce){
+  .hang{animation:none}
+  .track{transition:none}
+}
+.award{color:var(--coral-2);font-weight:600;margin:0 0 6px;font-size:.92rem}
+.pin p,.project p{margin:0 0 8px}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.links a{
+  text-decoration:none;font-size:.82rem;font-weight:600;
+  border:1px solid var(--line);border-radius:999px;padding:6px 10px;color:var(--ink);
+}
+.links a:hover{border-color:var(--coral);color:var(--coral-2)}
+.sheet{background:var(--cream);color:var(--ink);border-radius:24px;padding:8px 22px 22px;box-shadow:0 16px 34px rgba(0,0,0,.16)}
+.sheet h2{margin-top:22px}
+.sheet .rule{background:var(--coral)}
+.job{display:grid;grid-template-columns:46px 1fr;gap:8px 12px;padding:8px 0 16px;position:relative}
+.job:before{
+  content:"";position:absolute;left:18px;top:42px;bottom:0;border-left:1px dashed #d9d0c2;
+}
+.job:last-of-type:before{display:none}
+.logo{
+  width:38px;height:38px;border-radius:50%;
+  display:grid;place-items:center;font-weight:700;font-size:.78rem;
+  background:#fff;border:1px solid var(--line);color:var(--coral-2);
+}
+.org{font-weight:700;overflow-wrap:anywhere}
+.org span{font-weight:500;color:var(--muted)}
+.role{margin:2px 0;font-weight:650}
+.when{margin:0;color:var(--muted);font-size:.88rem}
+.job ul{margin:8px 0 0;padding-left:1.1rem}
+.job li{margin:0 0 4px}
+.projects{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.project{
+  background:var(--cream);color:var(--ink);
+  border-radius:22px;padding:12px 12px 16px;
+  box-shadow:0 14px 28px rgba(0,0,0,.16);
+}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.tags span{font-size:.75rem;background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 8px}
+footer{margin-top:36px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center}
+footer p{margin:0;color:#d5e6dc;font-size:.88rem}
+section,footer{scroll-margin-top:76px}
+@media(max-width:760px){
+  .navwrap{padding:10px 10px 0;padding-top:max(10px,env(safe-area-inset-top))}
+  nav{
+    width:100%;
+    justify-content:space-between;
+    gap:0;
+    padding:3px;
+  }
+  nav a{font-size:clamp(.68rem,2.7vw,.84rem);padding:9px 5px;letter-spacing:-.015em}
+  nav a.connect{padding:9px 8px}
+  .wrap{padding:16px 14px 48px}
+  .who{
+    grid-template-columns:128px minmax(0,1fr);
+    gap:6px 4px;
+    align-items:center;
+    justify-items:start;
+  }
+  .polaroid{width:100px;padding:6px 6px 16px;margin:10px 0 0 8px;transform:rotate(-4deg)}
+  .polaroid img{width:88px;height:100px}
+  .who .socials{grid-column:1 / -1}
+  h1{font-size:clamp(1.28rem,6.4vw,1.85rem)}
+  .script{font-size:clamp(1.15rem,4.8vw,1.45rem)}
+  .note{padding:16px 14px 10px}
+  h2{font-size:1.5rem;margin-top:32px}
+  h2 .script{font-size:1.35rem}
+  .frame img{height:168px}
+  .hang{flex-basis:86%}
+  .sheet{padding:8px 14px 16px}
+  .job{grid-template-columns:40px minmax(0,1fr)}
+  .projects{grid-template-columns:1fr}
+  .poster.shot img,.poster.shot.tall,.poster.shot img.bench{height:210px}
+  .poster.shot.tall{height:210px}
+  footer{flex-direction:column;align-items:flex-start;gap:14px}
+}
+@media(max-width:380px){
+  .who{grid-template-columns:1fr}
+  .polaroid{width:108px}
+  .polaroid img{width:96px;height:110px}
+  .who .socials{grid-column:auto}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#about">Skip to about</a>
+<div class="navwrap">
+  <nav aria-label="Primary">
+    <a href="#about">About</a>
+    <a href="#hackathons">Hackathons</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a class="connect" href="#connect">Connect</a>
+  </nav>
+</div>
+<main class="wrap">
+  <section id="about">
+    <div class="who">
+      <figure class="polaroid">
+        <img src="assets/portrait.jpg" alt="Portrait of Fabilous Lashidi">
+      </figure>
+      <div>
+        <h1>Fabilous Lashidi</h1>
+        <p class="script">Computer Science, NUST · Year 2.2</p>
+        <p class="script">Harare · third year in 2027</p>
+      </div>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/fabilous-lashidi-571ab0259/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M6.5 9.5V18M6.5 6.2v.2M10.5 18v-5.2a2.3 2.3 0 0 1 4.6 0V18M10.5 12.2V18"/></svg>
+        </a>
+        <a href="https://github.com/fabber04" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M9 18c-4 1.5-4-2-6-2m12 4v-3.2a2.8 2.8 0 0 0-.8-2.2c2.7-.3 5.5-1.3 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6 0C6.6 2.2 5.6 2.5 5.6 2.5a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 9c0 4.6 2.8 5.6 5.5 6a2.8 2.8 0 0 0-.8 2.2V20"/></svg>
+        </a>
+        <a href="mailto:fabulousdallen87@gmail.com" aria-label="Email">
+          <svg viewBox="0 0 24 24"><path d="M4 7h16v10H4zM4 7l8 6 8-6"/></svg>
+        </a>
+        <a href="tel:+263777965100" aria-label="Phone">
+          <svg viewBox="0 0 24 24"><path d="M8 4h3l1 4-2 1a12 12 0 0 0 5 5l1-2 4 1v3a2 2 0 0 1-2 2A16 16 0 0 1 6 6a2 2 0 0 1 2-2z"/></svg>
+        </a>
+      </div>
+    </div>
+    <article class="note">
+      <ul>
+        <li>I am a Computer Science student at the <a href="https://www.nust.ac.zw/" target="_blank" rel="noopener">National University of Science and Technology</a>. I am in year 2.2 now, and I will be in third year in 2027.</li>
+        <li>I work as a Tech Assistant at <a href="https://skilotech.com" target="_blank" rel="noopener">Skilotech</a>, supporting installations, troubleshooting, and documentation.</li>
+        <li>I build software that has to work for real people, in Python and JavaScript, including systems that keep a record when the network drops.</li>
+        <li>With a NUST team I took first place at TEXPO STEAMOn 2026 for <a href="https://github.com/fabber04/texpo-hackathon" target="_blank" rel="noopener">TracePunch</a>, an offline farm-traceability prototype.</li>
+        <li><a href="https://www.linkedin.com/in/fabilous-lashidi-571ab0259/" target="_blank" rel="noopener">CT Flex</a>, which I cofounded, was named one of two winning teams at the African Insurance Exchange 2026. It is a product concept for licensed partners. We are not an insurer.</li>
+        <li>This page is an internship portfolio, not a client site, and it is not affiliated with any bank.</li>
+      </ul>
+    </article>
+    <article class="card" aria-label="GitHub contributions">
+      <p class="cal-label">102 contributions in the last year</p>
+      <div class="scrollx">
+        <div class="months" id="months"></div>
+        <div class="cal" id="cal"></div>
+      </div>
+      <div class="cal-foot">
+        <span>GitHub activity for <a href="https://github.com/fabber04" target="_blank" rel="noopener">fabber04</a>, 12 Oct 2025 – 17 Oct 2026.</span>
+      </div>
+    </article>
+  </section>
+
+  <section id="hackathons">
+    <div class="hack-head">
+      <h2>Hackathons</h2>
+      <span class="badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 4h8v3a4 4 0 0 1-8 0V4zM6 5H4v2a4 4 0 0 0 4 4M18 5h2v2a4 4 0 0 1-4 4M12 14v3M9 20h6M10 17h4"/></svg>
+      </span>
+    </div>
+    <div class="clothesline">
+      <div class="rope" aria-hidden="true"></div>
+      <div class="viewport">
+        <div class="track" id="hack-track">
+          <article class="hang" style="--rot:-2.4deg;--delay:0s">
+            <div class="peg" aria-hidden="true"></div>
+            <div class="frame">
+              <img src="assets/hack-texpo.jpg" alt="TEXPO team in matching shirts in front of the event banner">
+              <p class="place">1st place</p>
+              <h3>TracePunch</h3>
+              <p>TEXPO STEAMOn 2026, with the NUST team. Offline farm records that still work when the network drops.</p>
+              <div class="links"><a href="https://github.com/fabber04/texpo-hackathon" target="_blank" rel="noopener">Source</a></div>
+            </div>
+          </article>
+          <article class="hang" style="--rot:2.1deg;--delay:.2s">
+            <div class="peg" aria-hidden="true"></div>
+            <div class="frame">
+              <img src="assets/hack-ctflex.jpg" alt="CT Flex team on stage at the African Insurance Exchange 2026">
+              <p class="place">Winning team</p>
+              <h3>CT Flex</h3>
+              <p>African Insurance Exchange 2026. One of two winning teams. A flexible-cover concept for informal workers. We are not the insurer.</p>
+              <div class="links"><a href="https://www.linkedin.com/posts/fabilous-lashidi-571ab0259_aie2026-insurtech-zimbabwe-activity-7488273383214858241-X0DQ" target="_blank" rel="noopener">LinkedIn</a></div>
+            </div>
+          </article>
+          <article class="hang" style="--rot:1.8deg;--delay:.4s">
+            <div class="peg" aria-hidden="true"></div>
+            <div class="frame">
+              <img class="up" src="assets/hack-pocket.jpg" alt="Fabilous Lashidi at the Pocket Ledger demo table">
+              <p class="place">Hack day</p>
+              <h3>Pocket Ledger</h3>
+              <p>Hack for Humanity Harare 2026. A notebook page or a spoken statement becomes a cash-versus-credit summary. Not a loan decision.</p>
+              <div class="links">
+                <a href="https://github.com/fabber04/czi-hackathon" target="_blank" rel="noopener">Source</a>
+                <a href="https://fabber04.github.io/czi-hackathon/" target="_blank" rel="noopener">Demo</a>
+              </div>
+            </div>
+          </article>
+          <article class="hang" style="--rot:-1.2deg;--delay:.8s">
+            <div class="peg" aria-hidden="true"></div>
+            <div class="frame">
+              <img src="assets/hack-czi.jpg" alt="People gathered at the Hack for Humanity venue in Harare">
+              <p class="place">Harare 2026</p>
+              <h3>Hack for Humanity</h3>
+              <p>The CZI and MLH room after the build. Same weekend as Pocket Ledger.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="arrows">
+        <button type="button" id="hack-prev" aria-label="Previous hackathon">‹</button>
+        <button type="button" id="hack-next" aria-label="Next hackathon">›</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience" class="sheet">
+    <h2>Experience <span class="script">&amp; education</span></h2>
+    <hr class="rule">
+    <article class="job">
+      <div class="logo">Sk</div>
+      <div>
+        <div class="org"><a href="https://skilotech.com" target="_blank" rel="noopener">Skilotech</a> <span>· Harare</span></div>
+        <p class="role">Tech Assistant</p>
+        <p class="when">Current</p>
+        <ul>
+          <li>Setup, troubleshooting, installations, and documentation for computer systems.</li>
+        </ul>
+      </div>
+    </article>
+    <article class="job">
+      <div class="logo">NU</div>
+      <div>
+        <div class="org">National University of Science and Technology <span>· Zimbabwe</span></div>
+        <p class="role">BSc Computer Science</p>
+        <p class="when">2025 – present · year 2.2, third year in 2027</p>
+        <ul>
+          <li>Programming, data structures, databases, and data analysis.</li>
+        </ul>
+      </div>
+    </article>
+    <h2 style="font-size:1.25rem;margin-top:8px">Also on the record</h2>
+    <article class="job">
+      <div class="logo">GC</div>
+      <div>
+        <div class="org">GCI World</div>
+        <p class="role">Data science programme</p>
+        <p class="when">April 2026 · Matsuo-Iwasawa Laboratory</p>
+      </div>
+    </article>
+    <article class="job">
+      <div class="logo">TV</div>
+      <div>
+        <div class="org">ThreatVector Security</div>
+        <p class="role">Hands-on cybersecurity training</p>
+        <p class="when">About 60 hours</p>
+      </div>
+    </article>
+  </section>
+
+  <section id="projects">
+    <h2>Projects <span class="script">pinned up</span></h2>
+    <hr class="rule">
+    <div class="projects">
+      <article class="project">
+        <div class="poster shot tall"><img class="bench" src="assets/tracepunch.jpg" alt="TracePunch bench: Raspberry Pi, camera, and soil trays on a TEXPO cloth"></div>
+        <h3>TracePunch</h3>
+        <p class="award">1st place · TEXPO STEAMOn 2026</p>
+        <p>Team prototype for farm traceability. Camera events on a Raspberry Pi, stored in SQLite and linked with hashes.</p>
+        <div class="tags"><span>Python</span><span>Raspberry Pi</span><span>SQLite</span></div>
+        <div class="links"><a href="https://github.com/fabber04/texpo-hackathon" target="_blank" rel="noopener">Source</a></div>
+      </article>
+      <article class="project">
+        <div class="poster p2"><span>CT Flex</span><strong>Cover that does not assume a salary</strong></div>
+        <h3>CT Flex</h3>
+        <p class="award">Winning team · African Insurance Exchange 2026</p>
+        <p>A flexible-premium product concept for informal and gig workers, written for licensed partners. Not an insurer.</p>
+        <div class="tags"><span>Product concept</span><span>Cofounder</span></div>
+        <div class="links"><a href="https://www.linkedin.com/in/fabilous-lashidi-571ab0259/" target="_blank" rel="noopener">Project story</a></div>
+      </article>
+      <article class="project">
+        <div class="poster shot"><img src="assets/pocket-ledger.png" alt="Pocket Ledger screen showing cash and credit from a trader notebook"></div>
+        <h3>Pocket Ledger</h3>
+        <p class="award">Hack for Humanity Harare 2026</p>
+        <p>Informal traders keep sales and customer credit in notebooks, which makes cash flow hard to show. Pocket Ledger reads a handwritten page or a spoken statement and turns it into a cash-versus-credit summary. It is an aid for review, not a loan decision or an audit.</p>
+        <div class="tags"><span>Python</span><span>Streamlit</span><span>Gemini</span></div>
+        <div class="links">
+          <a href="https://github.com/fabber04/czi-hackathon" target="_blank" rel="noopener">Source</a>
+          <a href="https://fabber04.github.io/czi-hackathon/" target="_blank" rel="noopener">Demo</a>
+        </div>
+      </article>
+      <article class="project">
+        <div class="poster p3"><span>Family of Greatness</span><strong>One place for the community</strong></div>
+        <h3>Family of Greatness</h3>
+        <p>A web app for a library, podcasts, events, and care, with a dashboard so the content lives in one product.</p>
+        <div class="tags"><span>JavaScript</span></div>
+        <div class="links">
+          <a href="https://familyofgreatness.com" target="_blank" rel="noopener">Live</a>
+          <a href="https://github.com/fabber04/fog-code-sample" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </article>
+      <article class="project">
+        <div class="poster p4"><span>Career Guidance</span><strong>A student guide, still a prototype</strong></div>
+        <h3>NUST Career Guidance</h3>
+        <p>Programmes, ratings, and alumni notes in one guide. A student build, not a finished university system.</p>
+        <div class="tags"><span>Prototype</span></div>
+        <div class="links"><a href="https://github.com/fabber04" target="_blank" rel="noopener">GitHub</a></div>
+      </article>
+      <article class="project">
+        <div class="poster p5"><span>Cybergates</span><strong>Sort the report, name the risk</strong></div>
+        <h3>Cybergates</h3>
+        <p>An early prototype for classifying phishing and scam reports, with a risk level and a suggested action.</p>
+        <div class="tags"><span>Early prototype</span></div>
+        <div class="links"><a href="https://github.com/fabber04" target="_blank" rel="noopener">GitHub</a></div>
+      </article>
+    </div>
+  </section>
+
+  <footer id="connect">
+    <div class="socials">
+      <a href="https://www.linkedin.com/in/fabilous-lashidi-571ab0259/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M6.5 9.5V18M6.5 6.2v.2M10.5 18v-5.2a2.3 2.3 0 0 1 4.6 0V18M10.5 12.2V18"/></svg>
+      </a>
+      <a href="https://github.com/fabber04" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M9 18c-4 1.5-4-2-6-2m12 4v-3.2a2.8 2.8 0 0 0-.8-2.2c2.7-.3 5.5-1.3 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.3 4.3 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.7 11.7 0 0 0-6 0C6.6 2.2 5.6 2.5 5.6 2.5a4.3 4.3 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.2 9c0 4.6 2.8 5.6 5.5 6a2.8 2.8 0 0 0-.8 2.2V20"/></svg>
+      </a>
+      <a href="mailto:fabulousdallen87@gmail.com" aria-label="Email">
+        <svg viewBox="0 0 24 24"><path d="M4 7h16v10H4zM4 7l8 6 8-6"/></svg>
+      </a>
+      <a href="tel:+263777965100" aria-label="Phone">
+        <svg viewBox="0 0 24 24"><path d="M8 4h3l1 4-2 1a12 12 0 0 0 5 5l1-2 4 1v3a2 2 0 0 1-2 2A16 16 0 0 1 6 6a2 2 0 0 1 2-2z"/></svg>
+      </a>
+    </div>
+    <p>Connect · © <span id="year"></span> Fabilous Lashidi<br>Internship portfolio. Not affiliated with any bank.</p>
+  </footer>
+</main>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+const START = "2025-10-12";
+const LEVELS = "0,0,1,1,2,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,2,0,1,2,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,3,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,2,0,0,0,1,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,2,0".split(",").map(Number);
+const start = new Date(START + "T12:00:00");
+const months = document.getElementById("months");
+const cal = document.getElementById("cal");
+const weeks = Math.ceil(LEVELS.length / 7);
+let last = "";
+for (let w = 0; w < weeks; w++) {
+  const d = new Date(start);
+  d.setDate(start.getDate() + w * 7);
+  const name = d.toLocaleString("en", { month: "short" });
+  const label = document.createElement("span");
+  label.textContent = name !== last ? name : "";
+  last = name;
+  months.appendChild(label);
+  for (let r = 0; r < 7; r++) {
+    const i = w * 7 + r;
+    const cell = document.createElement("i");
+    const day = new Date(start);
+    day.setDate(start.getDate() + i);
+    const iso = day.toISOString().slice(0, 10);
+    cell.className = "lv" + (LEVELS[i] || 0);
+    cell.title = iso;
+    cal.appendChild(cell);
+  }
+}
+const track = document.getElementById("hack-track");
+const prev = document.getElementById("hack-prev");
+const next = document.getElementById("hack-next");
+let hackIndex = 0;
+function hackMax(){
+  const card = track.children[0];
+  const gap = 22;
+  const w = card.getBoundingClientRect().width + gap;
+  const visible = Math.max(1, Math.floor((track.parentElement.clientWidth + gap) / w));
+  return Math.max(0, track.children.length - visible);
+}
+function hackGo(step){
+  hackIndex = Math.max(0, Math.min(hackMax(), hackIndex + step));
+  const card = track.children[0];
+  const gap = 22;
+  const w = card.getBoundingClientRect().width + gap;
+  track.style.transform = "translateX(" + (-hackIndex * w) + "px)";
+  prev.disabled = hackIndex === 0;
+  next.disabled = hackIndex === hackMax();
+}
+prev.addEventListener("click", () => hackGo(-1));
+next.addEventListener("click", () => hackGo(1));
+window.addEventListener("resize", () => hackGo(0));
+let swipeX = null;
+const hackView = track.parentElement;
+hackView.addEventListener("pointerdown", (e) => { swipeX = e.clientX; });
+hackView.addEventListener("pointerup", (e) => {
+  if (swipeX == null) return;
+  const dx = e.clientX - swipeX;
+  swipeX = null;
+  if (Math.abs(dx) < 48) return;
+  hackGo(dx < 0 ? 1 : -1);
+});
+hackView.addEventListener("pointercancel", () => { swipeX = null; });
+hackGo(0);
+</script>
+</body>
+</html>
