@@ -236,6 +236,23 @@ h2 .script{font-size:1.7rem;margin-left:6px}
 .job ul{margin:8px 0 0;padding-left:1.1rem}
 .job li{margin:0 0 4px}
 .projects{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+#projects{position:relative}
+.sticker{
+  position:absolute;z-index:4;padding:0;border:0;background:none;cursor:grab;
+  left:var(--x);top:var(--y);transform:rotate(var(--r));
+  filter:drop-shadow(0 10px 8px rgba(0,0,0,.28));
+  touch-action:none;user-select:none;
+}
+.sticker.dragging{cursor:grabbing;z-index:8}
+.sticker svg{display:block;width:var(--w,84px);height:auto;overflow:visible}
+.reset-stickers{
+  margin-top:16px;border:0;cursor:pointer;
+  background:var(--cream);color:var(--ink);
+  font:600 .82rem Inter,system-ui,sans-serif;
+  border-radius:999px;padding:8px 14px;
+  box-shadow:0 8px 16px rgba(0,0,0,.16);
+}
+.reset-stickers:hover{background:#fff}
 .project{
   background:var(--cream);color:var(--ink);
   border-radius:22px;padding:12px 12px 16px;
@@ -276,6 +293,9 @@ section,footer{scroll-margin-top:76px}
   .sheet{padding:8px 14px 16px}
   .job{grid-template-columns:40px minmax(0,1fr)}
   .projects{grid-template-columns:1fr}
+  .sticker{position:static;transform:rotate(var(--r));width:auto}
+  .sticker-dock{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end;align-items:flex-end;margin-top:8px}
+  .sticker svg{width:68px}
   .poster.shot img,.poster.shot.tall,.poster.shot img.bench{height:210px}
   .poster.shot.tall{height:210px}
   footer{flex-direction:column;align-items:flex-start;gap:14px}
@@ -517,6 +537,45 @@ section,footer{scroll-margin-top:76px}
         <div class="links"><a href="https://github.com/fabber04" target="_blank" rel="noopener">GitHub</a></div>
       </article>
     </div>
+    <div class="sticker-dock" id="sticker-dock">
+      <button class="sticker" type="button" style="--x:calc(100% - 6px);--y:168px;--r:14deg;--w:74px" aria-label="Maize sticker">
+        <svg viewBox="0 0 74 96" aria-hidden="true">
+          <path d="M28 18c8-16 22-16 28-2 8 6 10 20 4 34-2 18-8 36-16 40-10 6-22-2-26-16C12 56 14 32 28 18z" fill="#fff"/>
+          <path d="M36 22c6-8 16-6 18 2 6 8 6 22 0 36-4 12-10 22-16 22-8 0-14-12-16-26-2-14 4-28 14-34z" fill="#f2c14e"/>
+          <path d="M34 30h6M32 38h10M34 46h8M33 54h10M36 62h6" stroke="#e09a2e" stroke-width="3" stroke-linecap="round"/>
+          <path d="M22 30c-8 8-10 22-6 36 2 4 8 6 8 2 2-16 4-28 10-36-4-4-8-4-12-2z" fill="#7dbe4a"/>
+          <path d="M54 26c8 6 12 18 8 32-2 6-8 8-10 2-2-14 0-26-6-34 2-2 6-2 8 0z" fill="#5fa83a"/>
+        </svg>
+      </button>
+      <button class="sticker" type="button" style="--x:calc(100% - 18px);--y:248px;--r:-16deg;--w:96px" aria-label="Sneaker sticker">
+        <svg viewBox="0 0 110 70" aria-hidden="true">
+          <path d="M14 40c8-18 28-26 48-22 16 2 30 8 40 16 4 4 2 10-4 12l-74 8c-8 1-14-4-10-14z" fill="#fff"/>
+          <path d="M22 40c6-12 22-18 38-16 14 2 26 8 34 14 2 2 0 6-4 7L24 52c-4 0-6-6-2-12z" fill="#e23b2f"/>
+          <path d="M28 38c8-2 16 2 18 8M46 36c6 0 12 4 14 8" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M18 50h78c2 0 4 3 2 6l-8 6H22l-8-6c-2-3 0-6 4-6z" fill="#f4f1ea"/>
+          <path d="M20 56h74" stroke="#d9d0c2" stroke-width="2"/>
+        </svg>
+      </button>
+      <button class="sticker" type="button" style="--x:calc(100% + 8px);--y:340px;--r:4deg;--w:72px" aria-label="Pixel dog sticker">
+        <svg viewBox="0 0 16 16" aria-hidden="true" shape-rendering="crispEdges">
+          <path fill="#fff" d="M3 4h2v1h2v1h6v1h2v5h-1v2h-2v1H6v-1H4v-2H2V8H1V6h2z"/>
+          <path fill="#1a1a1a" d="M4 5h1v1h1v1h5v1h1v3h-1v2H7v1H6v-1H5v-2H4V8H3V6h1z"/>
+          <path fill="#fff" d="M10 8h1v1h-1z"/>
+          <path fill="#ef7458" d="M11 10h2v1h-2z"/>
+        </svg>
+      </button>
+      <button class="sticker" type="button" style="--x:calc(100% - 28px);--y:420px;--r:10deg;--w:84px" aria-label="Headphones sticker">
+        <svg viewBox="0 0 90 78" aria-hidden="true">
+          <path d="M18 36c0-18 12-30 27-30s27 12 27 30" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
+          <path d="M18 36c0-18 12-30 27-30s27 12 27 30" fill="none" stroke="#24312c" stroke-width="6" stroke-linecap="round"/>
+          <rect x="8" y="32" width="18" height="28" rx="8" fill="#fff"/>
+          <rect x="64" y="32" width="18" height="28" rx="8" fill="#fff"/>
+          <rect x="12" y="36" width="10" height="20" rx="5" fill="#1c4638"/>
+          <rect x="68" y="36" width="10" height="20" rx="5" fill="#1c4638"/>
+        </svg>
+      </button>
+    </div>
+    <button class="reset-stickers" type="button" id="reset-stickers">Reset stickers</button>
   </section>
 
   <footer id="connect">
@@ -600,6 +659,36 @@ hackView.addEventListener("pointerup", (e) => {
 });
 hackView.addEventListener("pointercancel", () => { swipeX = null; });
 hackGo(0);
+const stickerBoard = document.getElementById("projects");
+const stickers = [...document.querySelectorAll(".sticker")];
+stickers.forEach((sticker) => {
+  sticker.addEventListener("pointerdown", (e) => {
+    if (window.matchMedia("(max-width: 760px)").matches) return;
+    sticker.setPointerCapture(e.pointerId);
+    const board = stickerBoard.getBoundingClientRect();
+    const box = sticker.getBoundingClientRect();
+    sticker._dx = e.clientX - box.left;
+    sticker._dy = e.clientY - box.top;
+    sticker.classList.add("dragging");
+    sticker.style.left = (box.left - board.left) + "px";
+    sticker.style.top = (box.top - board.top) + "px";
+  });
+  sticker.addEventListener("pointermove", (e) => {
+    if (!sticker.classList.contains("dragging")) return;
+    const board = stickerBoard.getBoundingClientRect();
+    sticker.style.left = (e.clientX - board.left - sticker._dx) + "px";
+    sticker.style.top = (e.clientY - board.top - sticker._dy) + "px";
+  });
+  sticker.addEventListener("pointerup", () => sticker.classList.remove("dragging"));
+  sticker.addEventListener("pointercancel", () => sticker.classList.remove("dragging"));
+});
+document.getElementById("reset-stickers").addEventListener("click", () => {
+  stickers.forEach((sticker) => {
+    sticker.style.left = "";
+    sticker.style.top = "";
+    sticker.classList.remove("dragging");
+  });
+});
 </script>
 </body>
 </html>
